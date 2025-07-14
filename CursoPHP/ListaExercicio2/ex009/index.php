@@ -14,7 +14,7 @@
         $p2 = $_GET["p2"]?? 1;
     ?>
     <main>
-        <form action="<?php echo $_SERVER['PHP_SELF']?>" method="get">
+        <form action="<?= $_SERVER['PHP_SELF']?>" method="get">
             <label for="v1">Informe o valor 1: </label>
             <input type="number" name="v1" id="v1" value="<?= $v1 ?>">
 
