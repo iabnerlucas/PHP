@@ -42,4 +42,3 @@ echo $frase;
 echo '<br>';
 echo $fraseLimpa; 
 
-?>

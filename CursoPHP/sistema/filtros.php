@@ -7,21 +7,24 @@
  * @param int $numero O número a ser validado
  * @return bool Retorna true se o número for um inteiro válido, caso contrário, retorna false
  */
-function validarNumInt(int $numero): bool
+function validarNumInt($numero):bool
 {
-    return filter_var($numero, FILTER_VALIDATE_INT) !== false; // Verifica se o número é um inteiro válido
+    return filter_var($numero, FILTER_VALIDATE_INT);
 }
-echo validarNumInt(10) ? 'Número inteiro válido' : 'Número inválido'; // Exemplo de uso da função
- echo '<br>';
+
+echo validarNumInt(10) ? 'Número inteiro válido' : 'Número inteiro inválido';
+echo '<br>';
+
+
 
 /** 
  * Valida um número de ponto flutuante
  * @param float $numeroFloat o número a ser validado
  * @return bool retorna true ou false, dependendo se o número for um float válido ou não
 */
-function validarNumFloat($numero): bool
+function validarNumFloat($numeroFloat): bool
 {
-    return filter_var($numero, FILTER_VALIDATE_FLOAT);
+    return filter_var($numeroFloat, FILTER_VALIDATE_FLOAT);
 }
 
 // Testes:
@@ -33,20 +36,57 @@ echo validarNumFloat('abc') ? 'número float válido' : 'número float inválido
 
 echo '<br>';
 
+
+
+
+
+
+/**
+ * Valida uma URL com um filtro personalizado
+ * @param string $url a URL a ser validada  
+ * @return bool Retorna true se a URL for válida, caso contrário, retorna false.
+ */
+function validarUrl($url):bool
+{
+    if (str_contains($url, 'http://') or str_contains($url, 'https://'))
+    {
+        return false;
+    }
+    if (!str_contains($url, '.'))
+    {
+        return false;
+    }
+    if (str_contains($url, '.com'))
+    {
+        return false;
+    }
+    
+    return false;
+}
+
+
+
 /**
  * Valida uma URL
  * @param string $url url a ser validada
  * @return bool Retorna true se a URL for válida, caso contrário, retorna false
  */
-function validarUrl(string $url):bool
+function validarUrlComFiltro(string $url):bool
 {
     return filter_var($url, FILTER_VALIDATE_URL);
-} 
+}
 
 // Exemplo de uso da função validarUrl
-echo validarUrl('https://www.exemplo.com') ? 'URL válida' : 'URL inválida';
+echo validarUrlComFiltro('h://u') ? 'URL válida' : 'URL inválida';
+echo '<br>';
+echo validarUrl('h://u') ? 'URL válida' : 'URL inválida';
 
 echo '<br>';
+
+
+
+
+
 
 /**
  * Valida um endereço de email
@@ -58,11 +98,12 @@ function validarEmail(string $email): bool
     return filter_var($email, FILTER_VALIDATE_EMAIL); //filtro utilizado para validar o email, se for válido, retoma o valor true, senão, false.
 }
 
-if (validarEmail('teste@gmail.com')){
-    echo 'Email válido';
-} else {
-    echo 'Email inválido';
-}
+ echo validarEmail ('teste@dominio.com')? 'Email válido' : 'Email inválido';
+ echo '<br>';
+ echo validarEmail ('teste@.com')? 'Email válido' : 'Email inválido';
+ echo '<br>';
+ echo validarEmail ('teste@dominio')? 'Email válido' : 'Email inválido';
+
 
 
 
