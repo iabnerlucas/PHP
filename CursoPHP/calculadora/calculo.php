@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -9,18 +9,18 @@
 </head>
 
 <body>
-   <main>
+    <main>
         <?php
-        // Coletando dados enviados por GET
+        // Coletando dados via GET
         $idade = $_GET['idade'] ?? 1;
         $peso = $_GET['peso'] ?? 70;
-        $altura = $_GET['altura'] ?? 1.70;
+        $altura = $_GET['altura'] ?? 1.70; // em metros
         $calculoSelecionado = $_GET['calculo'] ?? '';
         $genero = $_GET['genero'] ?? '';
         $fatorAtividade = $_GET['ativFis'] ?? '';
         $resultado = null;
 
-        // Definindo o título da página
+        // Título dinâmico
         $titulo = "";
         if ($calculoSelecionado == 'imc') {
             $titulo = "Resultado do IMC";
@@ -28,11 +28,13 @@
             $titulo = "Resultado da TMB";
         } elseif ($calculoSelecionado == 'get') {
             $titulo = "Resultado da GET";
+        } else {
+            $titulo = "Resultado do Cálculo";
         }
 
         echo "<h1>$titulo</h1>";
 
-        // IMC
+        // Cálculo IMC
         if ($calculoSelecionado == 'imc') {
             if ($altura > 0) {
                 $resultado = $peso / ($altura * $altura);
@@ -48,38 +50,39 @@
                     echo "<p>Faixa: <strong>Obesidade</strong></p>";
                 }
             } else {
-                echo "<p>Altura inválida para cálculo do IMC.</p>";
+                echo "<p>Altura inválida para o cálculo do IMC.</p>";
             }
 
-        // TMB
+        // Cálculo TMB
         } elseif ($calculoSelecionado == 'tmb') {
             $alturaCm = $altura * 100;
-            $resultadoTmb = null;
 
             if ($genero == 'masculino') {
                 $resultadoTmb = 10 * $peso + 6.25 * $alturaCm - 5 * $idade + 5;
             } elseif ($genero == 'feminino') {
                 $resultadoTmb = 10 * $peso + 6.25 * $alturaCm - 5 * $idade - 161;
+            } else {
+                $resultadoTmb = null;
             }
 
             if ($resultadoTmb !== null) {
-                echo "<p><strong>Você gasta</strong> " . number_format($resultadoTmb, 2, ',', '.') . " kcal/dia</p>";
+                echo "<p><strong>Seu gasto energético basal (TMB):</strong> " . number_format($resultadoTmb, 2, ',', '.') . " kcal/dia</p>";
             } else {
                 echo "<p>Gênero não selecionado corretamente.</p>";
             }
 
-        // GET
+        // Cálculo GET
         } elseif ($calculoSelecionado == 'get') {
             $alturaCm = $altura * 100;
-            $resultadoTmb = null;
 
             if ($genero == 'masculino') {
                 $resultadoTmb = 10 * $peso + 6.25 * $alturaCm - 5 * $idade + 5;
             } elseif ($genero == 'feminino') {
                 $resultadoTmb = 10 * $peso + 6.25 * $alturaCm - 5 * $idade - 161;
+            } else {
+                $resultadoTmb = null;
             }
 
-            $resultadoGet = 0;
             if ($resultadoTmb !== null) {
                 switch ($fatorAtividade) {
                     case 'sedentario':
@@ -97,19 +100,26 @@
                     case 'muitoAtivo':
                         $resultadoGet = $resultadoTmb * 1.9;
                         break;
+                    default:
+                        $resultadoGet = null;
                 }
 
-                echo "<p><strong>Seu gasto energético total (GET):</strong> " . number_format($resultadoGet, 2, ',', '.') . " kcal/dia</p>";
+                if ($resultadoGet !== null) {
+                    echo "<p><strong>Seu gasto calórico total (GET):</strong> " . number_format($resultadoGet, 2, ',', '.') . " kcal/dia</p>";
+                } else {
+                    echo "<p>Você gasta $resultadoTmb kcal/dia</p>";
+                }
             } else {
-                echo "<p>Gênero não selecionado corretamente.</p>";
+                echo "<p>Gênero não selecionado corretamente para cálculo da TMB.</p>";
             }
 
+        // Nenhuma opção válida
         } else {
             echo "<p>Nenhum cálculo selecionado.</p>";
         }
         ?>
 
-           <p><a href="javascript:history.back()" class="btn-voltar"> Voltar para a página anterior</a></p>
+        <p><a href="javascript:history.back()" class="btn-voltar">⟵ Voltar para a página anterior</a></p>
     </main>
 </body>
 
