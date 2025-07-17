@@ -9,23 +9,25 @@
 </head>
 
 <body>
-    <main>
-
+   <main>
         <?php
         // Coletando dados enviados por GET
         $idade = $_GET['idade'] ?? 1;
         $peso = $_GET['peso'] ?? 70;
-        $altura = $_GET['altura'] ?? 1.70; // metros
+        $altura = $_GET['altura'] ?? 1.70;
         $calculoSelecionado = $_GET['calculo'] ?? '';
         $genero = $_GET['genero'] ?? '';
+        $fatorAtividade = $_GET['ativFis'] ?? '';
         $resultado = null;
 
-        // Definindo título com base na escolha do cálculo
-        $titulo = "Resultado do Cálculo";
+        // Definindo o título da página
+        $titulo = "";
         if ($calculoSelecionado == 'imc') {
             $titulo = "Resultado do IMC";
         } elseif ($calculoSelecionado == 'tmb') {
             $titulo = "Resultado da TMB";
+        } elseif ($calculoSelecionado == 'get') {
+            $titulo = "Resultado da GET";
         }
 
         echo "<h1>$titulo</h1>";
@@ -36,7 +38,6 @@
                 $resultado = $peso / ($altura * $altura);
                 echo "<p><strong>IMC:</strong> " . number_format($resultado, 2) . "</p>";
 
-                // Classificação
                 if ($resultado <= 18.5) {
                     echo "<p>Faixa: <strong>Magreza</strong></p>";
                 } elseif ($resultado <= 24.9) {
@@ -53,15 +54,52 @@
         // TMB
         } elseif ($calculoSelecionado == 'tmb') {
             $alturaCm = $altura * 100;
+            $resultadoTmb = null;
 
             if ($genero == 'masculino') {
-                $resultado = 10 * $peso + 6.25 * $alturaCm - 5 * $idade + 5;
+                $resultadoTmb = 10 * $peso + 6.25 * $alturaCm - 5 * $idade + 5;
             } elseif ($genero == 'feminino') {
-                $resultado = 10 * $peso + 6.25 * $alturaCm - 5 * $idade - 161;
+                $resultadoTmb = 10 * $peso + 6.25 * $alturaCm - 5 * $idade - 161;
             }
 
-            if ($resultado !== null) {
-                echo "<p><strong>TMB:</strong> " . number_format($resultado, 2, ',' , '.') . " kcal/dia</p>";
+            if ($resultadoTmb !== null) {
+                echo "<p><strong>Você gasta</strong> " . number_format($resultadoTmb, 2, ',', '.') . " kcal/dia</p>";
+            } else {
+                echo "<p>Gênero não selecionado corretamente.</p>";
+            }
+
+        // GET
+        } elseif ($calculoSelecionado == 'get') {
+            $alturaCm = $altura * 100;
+            $resultadoTmb = null;
+
+            if ($genero == 'masculino') {
+                $resultadoTmb = 10 * $peso + 6.25 * $alturaCm - 5 * $idade + 5;
+            } elseif ($genero == 'feminino') {
+                $resultadoTmb = 10 * $peso + 6.25 * $alturaCm - 5 * $idade - 161;
+            }
+
+            $resultadoGet = 0;
+            if ($resultadoTmb !== null) {
+                switch ($fatorAtividade) {
+                    case 'sedentario':
+                        $resultadoGet = $resultadoTmb * 1.2;
+                        break;
+                    case 'leve':
+                        $resultadoGet = $resultadoTmb * 1.375;
+                        break;
+                    case 'moderado':
+                        $resultadoGet = $resultadoTmb * 1.55;
+                        break;
+                    case 'ativo':
+                        $resultadoGet = $resultadoTmb * 1.75;
+                        break;
+                    case 'muitoAtivo':
+                        $resultadoGet = $resultadoTmb * 1.9;
+                        break;
+                }
+
+                echo "<p><strong>Seu gasto energético total (GET):</strong> " . number_format($resultadoGet, 2, ',', '.') . " kcal/dia</p>";
             } else {
                 echo "<p>Gênero não selecionado corretamente.</p>";
             }
@@ -71,7 +109,7 @@
         }
         ?>
 
-        <p><a href="javascript:history.back()">⟵ Voltar para a página anterior</a></p>
+           <p><a href="javascript:history.back()" class="btn-voltar"> Voltar para a página anterior</a></p>
     </main>
 </body>
 
