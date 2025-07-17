@@ -21,7 +21,7 @@ echo '<br>';
 
 //acessando os valores do array através dos índices
 
-echo $mesesInd['f'];
+echo $mesesInd['jl'];
 
 echo '<br>';
 echo '<br>';

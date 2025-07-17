@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main>
+        <h1>Calculadora de IMC e TMB</h1>
+        <form action="calculo.php" method="get">
+            <label for="idade">Informe sua idade: </label>
+            <input type="number" name="idade" id="idade" placeholder="ex.: 18">
+            <label for="peso">Informe seu peso: </label>
+            <input type="number" name="peso" id="peso" step="0.001" placeholder="ex.: 70.00">
+            <label for="altura">Informe sua altura: </label>
+            <input type="number" name="" id="" step="0.01" placeholder="ex.: 1.70">
+
+
+            <label for="genero">Qual seu gênero?:</label>
+            <select name="genero" id="calculo">
+                <option value="" disable selected>Selecione a Opção</option>
+                <option value="masculino" <?php if ($calculoSelecionado == 'masculino') echo 'selected'; ?>Masculino</option>
+                <option value="feminino" <?php if ($calculoSelecionado == 'feminino') echo 'selected'; ?>Feminino</option>
+            </select>
+
+
+            <label for="calculo">Escolha o cálculo a ser feito:</label>
+            <select name="calculo" id="calculo">
+                <option value="" disable selected>Selecione a Opção</option>
+                <option value="imc" <?php if ($calculoSelecionado == 'imc') echo 'selected'; ?>IMC</option>
+                <option value="tmb" <?php if ($calculoSelecionado == 'tmb') echo 'selected'; ?>TMB</option>
+
+                <input type="submit" value="Realizar cálculo">
+            </select>
+        </form>
+    </main>
+</body>
+
+</html>
