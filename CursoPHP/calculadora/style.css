@@ -1,63 +1,94 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Corpo da página */
 body {
-    font-family: Arial, sans-serif;
-    background: #f0f2f5;
-    margin: 0;
-    padding: 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #d0eaff, #ffffff);
+  padding: 40px;
+  color: #333;
 }
 
+/* Área principal */
 main {
-    max-width: 500px;
-    background: #fff;
-    padding: 30px;
-    margin: auto;
-    border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: auto;
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
 }
 
+/* Título */
 h1 {
-    text-align: center;
-    margin-bottom: 25px;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #0077cc;
+  font-size: 28px;
 }
 
+/* Rótulos */
 label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
+  display: block;
+  margin-top: 20px;
+  font-weight: 600;
+  color: #444;
 }
 
-input,
+/* Inputs e selects */
+input[type="number"],
 select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+/* Foco nos campos */
+input[type="number"]:focus,
+select:focus {
+  border-color: #0077cc;
+  box-shadow: 0 0 6px rgba(0, 119, 204, 0.3);
+  outline: none;
+}
+
+/* Botão */
 input[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    margin-top: 20px;
-    cursor: pointer;
-    transition: background 0.3s;
+  width: 100%;
+  background-color: #0077cc;
+  color: white;
+  font-size: 16px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 input[type="submit"]:hover {
-    background-color: #45a049;
+  background-color: #005fa3;
 }
 
-p {
-    margin-top: 20px;
-    text-align: center;
-}
-
+/* Link de retorno */
 a {
-    text-decoration: none;
-    color: #0077cc;
+  display: block;
+  text-align: center;
+  margin-top: 25px;
+  color: #0077cc;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
 }
 
 a:hover {
-    text-decoration: underline;
+  color: #005fa3;
 }
