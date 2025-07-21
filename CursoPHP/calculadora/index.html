@@ -1,51 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <main>
         <h1>Calculadora de IMC, GET e TMB</h1>
         <form action="calculo.php" method="get">
-            <label for="idade">Informe sua idade: </label>
+            <label for="idade">Informe sua idade:</label>
             <input type="number" name="idade" id="idade" placeholder="ex.: 18" required>
-            <label for="peso">Informe seu peso: </label>
+
+            <label for="peso">Informe seu peso:</label>
             <input type="number" name="peso" id="peso" step="0.001" placeholder="ex.: 70.00" required>
-            <label for="altura">Informe sua altura: </label>
-            <input type="number" name="" id="" step="0.01" placeholder="ex.: 1.70" required>
 
+            <label for="altura">Informe sua altura:</label>
+            <input type="number" name="altura" id="altura" step="0.01" placeholder="ex.: 1.70" required>
 
-            <label for="genero">Qual seu gênero?:</label>
-            <select name="genero" id="genero">
-                <option value="" disable selected>Selecione a Opção</option>
-                <option value="masculino" <?php if ($calculoSelecionado == 'masculino') echo 'selected'; ?>Masculino</option>
-                <option value="feminino" <?php if ($calculoSelecionado == 'feminino') echo 'selected'; ?>Feminino</option>
+            <label for="genero">Qual seu gênero?</label>
+            <select name="genero" id="genero" required>
+                <option value="" disabled selected>Selecione a Opção</option>
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
             </select>
 
-            <label for="ativFis">Qual seu nível de atividade física?:</label>
-            <select name="ativFis" id="ativFis">
-                <option value="" disable selected>Selecione a Opção</option>
-                <option value="sedentário" <?php if ($ativFis == 'sedentário') echo 'selected'; ?>Sedentário (nenhum exercício)</option>
-                <option value="leve" <?php if ($ativFis == 'leve') echo 'selected'; ?>Leve (1-2 dias na semana)</option>
-                <option value="moderado" <?php if ($ativFis == 'moderado') echo 'selected'; ?>Moderado (2-3 dias na semana)</option>
-                <option value="ativo" <?php if ($ativFis == 'ativo') echo 'selected'; ?>Ativo(3-5 dias na semana)</option>
-                <option value="muitoAtivo" <?php if ($ativFis == 'muitoAtivo') echo 'selected'; ?>Muito Ativo(7 dias na semana)</option>
+            <label for="ativFis">Qual seu nível de atividade física?</label>
+            <select name="ativFis" id="ativFis" required>
+                <option value="" disabled selected>Selecione a Opção</option>
+                <option value="sedentário">Sedentário (nenhum exercício)</option>
+                <option value="leve">Leve (1-2 dias na semana)</option>
+                <option value="moderado">Moderado (2-3 dias na semana)</option>
+                <option value="ativo">Ativo (3-5 dias na semana)</option>
+                <option value="muitoAtivo">Muito Ativo (7 dias na semana)</option>
             </select>
 
             <label for="calculo">Escolha o cálculo a ser feito:</label>
-            <select name="calculo" id="calculo">
-                <option value="" disable selected>Selecione a Opção</option>
-                <option value="imc" <?php if ($calculoSelecionado == 'imc') echo 'selected'; ?>IMC</option>
-                <option value="tmb" <?php if ($calculoSelecionado == 'tmb') echo 'selected'; ?>TMB</option>
-                <option value="get" <?php if ($calculoSelecionado == 'get') echo 'selected'; ?>GET</option>
-
-                <input type="submit" value="Realizar cálculo">
+            <select name="calculo" id="calculo" required>
+                <option value="" disabled selected>Selecione a Opção</option>
+                <option value="imc">IMC</option>
+                <option value="tmb">TMB</option>
+                <option value="get">GET</option>
             </select>
+
+            <input type="submit" value="Realizar cálculo">
         </form>
     </main>
 </body>
