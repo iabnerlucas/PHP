@@ -1,11 +1,9 @@
-/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Corpo da página */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #d0eaff, #ffffff);
@@ -13,7 +11,6 @@ body {
   color: #333;
 }
 
-/* Área principal */
 main {
   max-width: 500px;
   margin: auto;
@@ -24,7 +21,6 @@ main {
   transition: 0.3s;
 }
 
-/* Título */
 h1 {
   text-align: center;
   margin-bottom: 30px;
@@ -32,7 +28,6 @@ h1 {
   font-size: 28px;
 }
 
-/* Rótulos */
 label {
   display: block;
   margin-top: 20px;
@@ -40,7 +35,6 @@ label {
   color: #444;
 }
 
-/* Inputs e selects */
 input[type="number"],
 select {
   width: 100%;
@@ -52,7 +46,6 @@ select {
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-/* Foco nos campos */
 input[type="number"]:focus,
 select:focus {
   border-color: #0077cc;
@@ -60,7 +53,6 @@ select:focus {
   outline: none;
 }
 
-/* Botão */
 input[type="submit"] {
   width: 100%;
   background-color: #0077cc;
@@ -78,7 +70,6 @@ input[type="submit"]:hover {
   background-color: #005fa3;
 }
 
-/* Link de retorno */
 a {
   display: block;
   text-align: center;
@@ -94,21 +85,50 @@ a:hover {
 }
 
 .btn-voltar {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #008CBA;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 8px;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #008CBA;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btn-voltar:hover {
-    background-color: #005f79;
+  background-color: #005f79;
 }
+
 main p {
-    text-align: center;
-    margin-top: 30px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 20px;
+  }
+
+  main {
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  input[type="submit"] {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  label {
+    font-size: 14px;
+  }
+
+  input,
+  select {
+    font-size: 14px;
+  }
 }
