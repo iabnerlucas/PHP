@@ -1,0 +1,111 @@
+/* Reset e fonte base */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f0ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Container do formulário */
+.container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    width: 370px;
+}
+
+/* Título */
+.container h2 {
+    text-align: center;
+    color: #820ad1;
+    margin-bottom: 30px;
+    font-size: 24px;
+}
+
+/* Campos */
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 15px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+    border-color: #b266ff;
+    box-shadow: 0 0 0 3px rgba(178, 102, 255, 0.2);
+    outline: none;
+}
+
+/* Botão centralizado */
+button {
+    width: 200px;               /* largura fixa */
+    padding: 14px;
+    background: linear-gradient(135deg, #820ad1, #9e1fff);
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(130, 10, 209, 0.3);
+    transition: all 0.3s ease;
+
+    margin: 0 auto;             /* centraliza horizontalmente */
+    display: block;             /* permite o margin auto funcionar */
+}
+
+button:hover {
+    background: linear-gradient(135deg, #6d09b3, #820ad1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(130, 10, 209, 0.4);
+}
+
+/* Campo de senha com botão de visualização */
+.senha-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.senha-container input {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.toggle-senha {
+    position: absolute;
+    right: 12px;
+    font-size: 18px;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.toggle-senha:hover {
+    color: #820ad1;
+}
+
+/* Mensagens e retorno */
+.mensagem {
+    margin-top: 25px;
+    color: #555;
+    font-size: 14px;
+    text-align: center;
+}
