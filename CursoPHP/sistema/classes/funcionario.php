@@ -4,6 +4,7 @@
 abstract class Funcionario
 {
 
+    //criando os atributos
     private $nome;
     private $codIdent;
     private $cargo;
@@ -11,6 +12,8 @@ abstract class Funcionario
     private $horas;
     private $salario;
 
+
+    //criando os getters e setters de cada atributo, já que são todos privates
     public function getValorHora(){return $this->valorHora;}
     public function setValorHora($s){$this->valorHora = $s;}
 
@@ -28,7 +31,9 @@ abstract class Funcionario
 
     public function getSalario() { return $this->salario; }
 
-    
+
+
+    //criando as funções OBRIGATÓRIAS em cada classe filha
     public function nome(){
         return 'Nome do funcionário: ' . $this->nome;
     }
@@ -45,6 +50,8 @@ abstract class Funcionario
         $this->salario = $this->getHoras() * $this->getValorHora();
         return 'Salário mensal: ' .$this->salario;
     }
+
+    //função para exibir os dados
     public function exibir(){
         echo $this->nome(). '<br>'; 
         echo $this->cargo(). '<br>'; 
@@ -54,21 +61,31 @@ abstract class Funcionario
     }
 }
 
+
+//classe filha gerente
 class Gerente extends Funcionario
 {
+
+    //função específica para a classe gerente
     public function gerenciar(){
         echo $this->getNome() . ' gerencia os setores: comercial, marketing e logística.';
     }
     
 }
 
+
+//classe filha supervisor
 class Supervisor extends Funcionario
 {
+    
+    //função específica para a classe supervisor
     public function supervisionar(){
         echo $this->getNome() . ' supervisiona os setores: comercial, marketing e logística.';
     }
 }
 
+
+//instaciando a classe gerente
 $gerente = new Gerente();
 $gerente->setNome('Lucas Venin');
 $gerente->setCargo('Gerente');
@@ -83,6 +100,7 @@ echo '<br>';
 echo '<br>';
 echo '<br>';
 
+//instaciando a classe supervisor
 $supervisor = new Supervisor();
 $supervisor->setNome('Gabriel Fratezzi');
 $supervisor->setCargo('Supervisor');
